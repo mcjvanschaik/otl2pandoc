@@ -1,0 +1,51 @@
+% Outline in Vim, publish with Pandoc
+% Michael van Schaik
+% 18 december 2020
+
+otl2pandoc
+	: Otl2pandoc is a simple script that enables you to make a quick outline
+	: using the Vim Outliner or votl plugins. 
+	Workflow
+		: When writing in otl you can easily fold the text. The plugins show the
+		: type of node when you have started using a prefix. To publish to a PDF you
+		: can convert the document via otl2pandoc to pandoc and use this to create
+		: the new file.
+	Metadata
+		: Pandoc supports a simple header using % signs. These are supported in
+		: otl2pandoc.
+	Verbatim text or code
+		: It is possible to use a > or < to write text that will be marked to be
+		: show verbatim. In order for the text to be processed properly an empty
+		: line should precede the table. In the otl-file this should be forced
+		: with a line stat starts with : or ;.
+		:
+			> +-----+     +------------+     +--------+     +-----+
+			> | otl | --> | otl2pandoc | --> | pandoc | --> | pdf |
+			> +-----+     +------------+     +--------+     +-----+
+	Tables
+		: reStructuredText tables can be used in pandoc and will be passed to the
+		: markdown file. In order for the table to be processed properly an empty
+		: line should precede the table. In the otl-file this should be forced
+		: with a line stat starts with : or ;.
+		:
+		: If a line starts with a special character as used in the otl-fileformat,
+		: it will be interpreted as indicated in the table below.
+		:
+		+--------+------------------+
+		| start  | formatting   |
+		+--------+------------------+
+		|  %     | Preamble line  	|
+		+--------+------------------+
+		|  :     | Paragraph        |
+		+--------+------------------+
+		|  ;     | Paragraph        |
+		+--------+------------------+
+		|  >     | Verbatim (code)  |
+		+--------+------------------+
+		|  <     | Verbatim (code)  |
+		+--------+------------------+
+		| newline| ignored line     |
+		+--------+------------------+
+		|        | Heading          |
+		+--------+------------------+
+
