@@ -33,8 +33,11 @@ def otl2markdown(argv):
             outputlines.append("\t%s" % (line.strip()[2:]))
         elif line.strip().startswith('['):
             cline = line.replace("[_]","[ ]")
-            cblevel = (count_indent(line)-2) * '\t'
-            outputlines.append("%s+ %s" % (cblevel, cline.strip()))
+            if count_indent(line) == 1:
+                outputlines.append("+ %s" % (cline.strip()))
+            else:
+                cblevel = (count_indent(line)-1) * '\t'
+                outputlines.append("%s+ %s" % (cblevel, cline.strip()))
         else:
             heading = count_indent(line) * '#'
             outputlines.append("\n%s %s\n" % (heading, line.strip()))

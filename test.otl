@@ -49,11 +49,5 @@ otl2pandoc
 		|        | Heading          |
 		+--------+------------------+
 	Todolists
-		: Todo lists start with a '[' and will be converted to Pandoc-syntax to create pretty checked and unchecked boxes. The first two levels will be shown as a toplevel todo, following sublevels will be processed as subtasks. The maximum level to start a todo-list is the second level.
-	[_] checkbox level 1
-		[_] level 2
-		[_] level 2 second
-	[x] checkbox done
-Testing 
-	: the last section.
-
+		: Todo lists start with a '[' and will be converted to Pandoc-syntax to
+		: create pretty checked and unchecked boxes. Todo-lists need to start at the highest level of the outline or in the first indent. 
